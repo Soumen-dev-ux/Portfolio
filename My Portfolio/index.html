@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Initial state for header animation */
+        #navbar {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        
+        /* Animation keyframes */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Animated background for dark mode */
+        :root[data-theme="dark"] .hero {
+            background: linear-gradient(45deg, #111827, #1f2937, #111827);
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        /* New animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-90deg);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Counter animation */
+        .counter-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .counter-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Timeline animations */
+        .timeline-item {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Education card animations */
+        .education-card {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .education-card.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-content">
+            <div class="nav-logo-container">
+                <h1 class="logo">Portfolio</h1>
+                <button id="mobileMenuToggle" class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#stats">Stats</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="animated-bg"></div>
+        <div class="hero-content">
+            <div class="profile-image animate-float">
+                <img src="https://i.postimg.cc/9MN00Vrn/Whats-App-Image-2025-03-23-at-12-28-14-174b753f.jpg" alt="Soumen Pore">
+            </div>
+            <h1 class="animate-element">Hi, I'm <span class="highlight">Soumen Pore</span></h1>
+            <p class="subtitle animate-element">Full Stack Developer & Creative Professional</p>
+            <div class="cta-buttons animate-element">
+                <a href="#contact" class="cta-button">Get in Touch</a>
+                <div class="social-links">
+                    <a href="https://github.com/Soumen-dev-ux" target="_blank" class="social-button">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/soumen-pore-3998b1312/" target="_blank" class="social-button">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.instagram.com/your_sou_0109/" target="_blank" class="social-button">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about reveal-section">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a multifaceted creative professional with expertise in development, design, and visual arts. I combine technical skills with artistic vision to create compelling digital experiences.</p>
+                <div class="skills">
+                    <h3>Technical Skills</h3>
+                    <ul class="skill-list">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>React.js</li>
+                        <li>Node.js</li>
+                        <li>MongoDB</li>
+                    </ul>
+                    <h3>Creative Skills</h3>
+                    <ul class="skill-list">
+                        <li>Graphic Design</li>
+                        <li>Adobe Creative Suite</li>
+                        <li>UI/UX Design</li>
+                        <li>Photography</li>
+                        <li>Photo Editing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="stats reveal-section">
+        <h2>My Journey in Numbers</h2>
+        <div class="stats-container">
+            <div class="counter-item">
+                <div class="counter-value" data-target="1">0</div>
+                <div class="counter-label">Projects Completed</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-value" data-target="0">0</div>
+                <div class="counter-label">Years Experience</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-value" data-target="1">0</div>
+                <div class="counter-label">Hackathon Participated</div>
+            </div>
+            <div class="counter-item">
+                <div class="counter-value" data-target="1">0</div>
+                <div class="counter-label">Awards</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects reveal-section">
+        <h2>My Projects</h2>
+        <div class="project-grid" id="projectGrid"></div>
+    </section>
+
+    <section id="achievements" class="achievements reveal-section">
+        <h2>Achievements</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2025</div>
+                <div class="timeline-content">
+                    <h3>Freshers Talent Award</h3>
+                    <p>Recognized for outstanding contributions to web development and innovative solutions as a freshers participant and Team Leader.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education reveal-section">
+        <h2>Education</h2>
+        <div class="education-container">
+            <div class="education-card">
+                <div class="education-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="education-details">
+                    <h3>Joined Gargi Memorial Institute of Technology</h3>
+                    <h4>JIS, MAKAUT</h4>
+                    <div class="education-year">2024-2028</div>
+                    <p>Bachelor of Technology in Electronics & Communication Engineering</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact reveal-section">
+        <h2>Get in Touch</h2>
+        <form id="contactForm" class="contact-form">
+            <input type="text" placeholder="Name" required class="animate-input">
+            <input type="email" placeholder="Email" required class="animate-input">
+            <textarea placeholder="Message" required class="animate-input"></textarea>
+            <button type="submit" class="submit-button">Send Message</button>
+        </form>
+    </section>
+
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Your Portfolio. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/Soumen-dev-ux" target="_blank" class="social-button">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/soumen-pore-3998b1312/" target="_blank" class="social-button">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.instagram.com/your_sou_0109/" target="_blank" class="social-button">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
+

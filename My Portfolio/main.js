@@ -9,6 +9,15 @@ const projects = [
     liveLink: "https://freshandfastgmit.netlify.app/",
     githubLink: "https://github.com/Soumen-dev-ux/soumenpore/ecommerce-platform",
   },
+  {
+    title: "SafeSpace",
+    description:
+      "Protecting students, women, the elderly, and travelers with advanced AI technology that works silently in the background.",
+    image: "https://postimage.me/images/2025/04/24/Screenshot-2025-04-23-140935.png",
+    technologies: ["Next.js", "React", "Tailwind CSS", "Radix UI", "Supabse", "PostgreSQL", "PNPM"],
+    liveLink: " https://safespace-2-0.vercel.app/",
+    githubLink: "https://github.com/Debraj1001/safespace-2-0",
+  },
 ]
 
 // Theme toggle functionality
@@ -20,11 +29,21 @@ function toggleTheme() {
   const currentTheme = html.getAttribute("data-theme")
   const newTheme = currentTheme === "dark" ? "light" : "dark"
 
-  html.setAttribute("data-theme", newTheme)
-  themeIcon.className = newTheme === "dark" ? "fas fa-sun" : "fas fa-moon"
+  // Add page transition effect
+  const pageTransition = document.querySelector(".page-transition")
+  pageTransition.classList.add("active")
 
-  // Save theme preference
-  localStorage.setItem("theme", newTheme)
+  setTimeout(() => {
+    html.setAttribute("data-theme", newTheme)
+    themeIcon.className = newTheme === "dark" ? "fas fa-sun" : "fas fa-moon"
+
+    // Save theme preference
+    localStorage.setItem("theme", newTheme)
+
+    setTimeout(() => {
+      pageTransition.classList.remove("active")
+    }, 500)
+  }, 500)
 }
 
 // Load saved theme
@@ -47,7 +66,7 @@ function handleScroll() {
 
   // Highlight active section in navigation
   const sections = document.querySelectorAll("section")
-  const navLinks = document.querySelectorAll(".nav-links a")
+  const navLinks = document.querySelectorAll(".nav-link")
 
   let currentSection = ""
 
@@ -225,7 +244,7 @@ contactForm.addEventListener("submit", async (e) => {
 
   // Animate button
   submitButton.style.transform = "scale(0.95)"
-  submitButton.textContent = "Sending..."
+  submitButton.innerHTML = '<span>Sending...</span> <i class="fas fa-spinner fa-spin"></i>'
 
   try {
     // Simulate sending (replace with actual API call)
@@ -233,7 +252,7 @@ contactForm.addEventListener("submit", async (e) => {
 
     // Success animation
     submitButton.style.backgroundColor = "#10B981"
-    submitButton.textContent = "Message Sent!"
+    submitButton.innerHTML = '<span>Message Sent!</span> <i class="fas fa-check"></i>'
 
     // Reset form
     e.target.reset()
@@ -242,17 +261,17 @@ contactForm.addEventListener("submit", async (e) => {
     setTimeout(() => {
       submitButton.style.transform = ""
       submitButton.style.backgroundColor = ""
-      submitButton.textContent = "Send Message"
+      submitButton.innerHTML = '<span>Send Message</span> <i class="fas fa-paper-plane"></i>'
     }, 2000)
   } catch (error) {
     // Error handling
     submitButton.style.backgroundColor = "#EF4444"
-    submitButton.textContent = "Error! Try Again"
+    submitButton.innerHTML = '<span>Error! Try Again</span> <i class="fas fa-exclamation-circle"></i>'
 
     setTimeout(() => {
       submitButton.style.transform = ""
       submitButton.style.backgroundColor = ""
-      submitButton.textContent = "Send Message"
+      submitButton.innerHTML = '<span>Send Message</span> <i class="fas fa-paper-plane"></i>'
     }, 2000)
   }
 })
@@ -267,10 +286,43 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   })
 })
 
+// Create particles for background animation
+function createParticles() {
+  const hero = document.querySelector(".hero")
+  const particleCount = 30
+
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement("div")
+    particle.className = "particle"
+
+    // Random styling
+    particle.style.width = Math.random() * 5 + 3 + "px"
+    particle.style.height = particle.style.width
+    particle.style.background = `rgba(${Math.random() * 100 + 100}, ${Math.random() * 100 + 100}, 255, ${Math.random() * 0.3 + 0.1})`
+
+    // Random position
+    particle.style.left = Math.random() * 100 + "vw"
+    particle.style.top = Math.random() * 100 + "vh"
+
+    // Animation
+    particle.style.animation = `float ${Math.random() * 10 + 10}s linear infinite`
+    particle.style.opacity = "0"
+
+    hero.appendChild(particle)
+
+    // Delayed appearance
+    setTimeout(() => {
+      particle.style.transition = "opacity 1s ease"
+      particle.style.opacity = Math.random() * 0.5 + 0.1
+    }, Math.random() * 1000)
+  }
+}
+
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects()
   handleScroll() // Initialize active section
+  createParticles() // Add particle animation
 
   // Mobile menu toggle
   const mobileMenuToggle = document.getElementById("mobileMenuToggle")
@@ -289,7 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   // Close mobile menu when a link is clicked
-  document.querySelectorAll(".nav-links a").forEach((link) => {
+  document.querySelectorAll(".nav-link").forEach((link) => {
     link.addEventListener("click", () => {
       if (window.innerWidth <= 768) {
         navLinks.classList.remove("active")
@@ -313,4 +365,3 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial reveal of sections that are already in view
   revealSections()
 })
-

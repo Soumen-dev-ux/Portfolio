@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Soumen Pore | Portfolio</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Initial state for header animation */
         #navbar {
@@ -96,6 +99,16 @@
             }
         }
 
+        /* Shine effect */
+        @keyframes shine {
+            0% {
+                background-position: -100% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
         /* Counter animation */
         .counter-item {
             opacity: 0;
@@ -131,25 +144,94 @@
             opacity: 1;
             transform: scale(1);
         }
+        
+        /* X (Twitter) icon styling */
+        .x-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .x-icon::before {
+            content: "𝕏";
+            font-family: Arial, sans-serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #fff 20%, #ddd 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .social-button:hover .x-icon::before {
+            transform: scale(1.2) rotate(5deg);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Special styling for X social button */
+        .social-button.x-button {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .social-button.x-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .social-button.x-button:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .social-button.x-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Particle animation */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
+    
+    <div class="page-transition"></div>
+    
     <nav id="navbar">
         <div class="nav-content">
             <div class="nav-logo-container">
-                <h1 class="logo">Portfolio</h1>
+                <h1 class="logo">Soumen<span>Pore</span></h1>
                 <button id="mobileMenuToggle" class="mobile-menu-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#stats">Stats</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#achievements">Achievements</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#stats" class="nav-link">Stats</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -159,48 +241,58 @@
         <div class="hero-content">
             <div class="profile-image animate-float">
                 <img src="https://i.postimg.cc/9MN00Vrn/Whats-App-Image-2025-03-23-at-12-28-14-174b753f.jpg" alt="Soumen Pore">
+                <div class="profile-border"></div>
             </div>
             <h1 class="animate-element">Hi, I'm <span class="highlight">Soumen Pore</span></h1>
-            <p class="subtitle animate-element">Full Stack Developer & Creative Professional</p>
+            <p class="subtitle animate-element">Embedded Full Stack Developer & Creative Professional</p>
             <div class="cta-buttons animate-element">
                 <a href="#contact" class="cta-button">Get in Touch</a>
                 <div class="social-links">
-                    <a href="https://github.com/Soumen-dev-ux" target="_blank" class="social-button">
+                    <a href="https://github.com/Soumen-dev-ux" target="_blank" class="social-button github-button">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/soumen-pore-3998b1312/" target="_blank" class="social-button">
-                        <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/soumen-pore-3998b1312/" target="_blank" class="social-button linkedin-button">
+                        <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="https://www.instagram.com/your_sou_0109/" target="_blank" class="social-button">
+                    <a href="https://www.instagram.com/your_sou_0109/" target="_blank" class="social-button instagram-button">
                         <i class="fab fa-instagram"></i>
                     </a>
+                    <a href="https://x.com/SoumenPore62983" target="_blank" class="social-button x-button">
+                        <span class="x-icon"></span>
+                    </a>
                 </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <i class="fas fa-chevron-down"></i>
             </div>
         </div>
     </section>
 
     <section id="about" class="about reveal-section">
-        <h2>About Me</h2>
+        <div class="section-header">
+            <span class="section-tag">About Me</span>
+            <h2>Who I Am</h2>
+            <div class="section-line"></div>
+        </div>
         <div class="about-content">
             <div class="about-text">
-                <p>I'm a multifaceted creative professional with expertise in development, design, and visual arts. I combine technical skills with artistic vision to create compelling digital experiences.</p>
+                <p>I'm an embedded multifaceted creative professional with expertise in development, design, and visual arts. I combine technical skills with artistic vision to create compelling digital experiences that engage users and solve real-world problems.</p>
                 <div class="skills">
                     <h3>Technical Skills</h3>
                     <ul class="skill-list">
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                        <li>React.js</li>
-                        <li>Node.js</li>
-                        <li>MongoDB</li>
-                    </ul>
+                        <li><span>HTML5</span></li>
+                        <li><span>CSS3</span></li>
+                        <li><span>JavaScript</span></li>
+                        <li><span>Python</span></li>
+                     </ul>
                     <h3>Creative Skills</h3>
                     <ul class="skill-list">
-                        <li>Graphic Design</li>
-                        <li>Adobe Creative Suite</li>
-                        <li>UI/UX Design</li>
-                        <li>Photography</li>
-                        <li>Photo Editing</li>
+                        <li><span>Graphic Design</span></li>
+                        <li><span>Adobe Creative Suite</span></li>
+                        <li><span>UI/UX Design</span></li>
+                        <li><span>Photography</span></li>
+                        <li><span>Photo Editing</span></li>
                     </ul>
                 </div>
             </div>
@@ -208,21 +300,30 @@
     </section>
 
     <section id="stats" class="stats reveal-section">
-        <h2>My Journey in Numbers</h2>
+        <div class="section-header">
+            <span class="section-tag">Statistics</span>
+            <h2>My Journey in Numbers</h2>
+            <div class="section-line"></div>
+        </div>
         <div class="stats-container">
             <div class="counter-item">
-                <div class="counter-value" data-target="1">0</div>
+                <div class="counter-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="counter-value" data-target="2">0</div>
                 <div class="counter-label">Projects Completed</div>
+            </div>    
+            <div class="counter-item">
+                <div class="counter-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="counter-value" data-target="2">0</div>
+                <div class="counter-label">Hackathons</div>
             </div>
             <div class="counter-item">
-                <div class="counter-value" data-target="0">0</div>
-                <div class="counter-label">Years Experience</div>
-            </div>
-            <div class="counter-item">
-                <div class="counter-value" data-target="1">0</div>
-                <div class="counter-label">Hackathon Participated</div>
-            </div>
-            <div class="counter-item">
+                <div class="counter-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
                 <div class="counter-value" data-target="1">0</div>
                 <div class="counter-label">Awards</div>
             </div>
@@ -230,12 +331,20 @@
     </section>
 
     <section id="projects" class="projects reveal-section">
-        <h2>My Projects</h2>
+        <div class="section-header">
+            <span class="section-tag">Portfolio</span>
+            <h2>My Projects</h2>
+            <div class="section-line"></div>
+        </div>
         <div class="project-grid" id="projectGrid"></div>
     </section>
 
     <section id="achievements" class="achievements reveal-section">
-        <h2>Achievements</h2>
+        <div class="section-header">
+            <span class="section-tag">Recognition</span>
+            <h2>Achievements</h2>
+            <div class="section-line"></div>
+        </div>
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-date">2025</div>
@@ -244,15 +353,37 @@
                     <p>Recognized for outstanding contributions to web development and innovative solutions as a freshers participant and Team Leader.</p>
                 </div>
             </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2025</div>
+                <div class="timeline-content">
+                    <h3>Participant at NameSpace</h3>
+                    <p>Thrilled to have participated in and led a team at my first national online hackathon, *HACKHAZARDS*, hosted by the amazing NameSpace Community—an incredible journey of innovation, teamwork, and growth!</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="education" class="education reveal-section">
-        <h2>Education</h2>
+        <div class="section-header">
+            <span class="section-tag">Learning</span>
+            <h2>Education</h2>
+            <div class="section-line"></div>
+        </div>
         <div class="education-container">
             <div class="education-card">
                 <div class="education-icon">
                     <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="education-details">
+                    <h3>Ananntapur Siddheswari High School (H.S.)</h3>
+                    <h4>WBCHSE</h4>
+                    <div class="education-year">2022-2024</div>
+                    <p>Higher Secondary</p>
+                </div>
+            </div>
+            <div class="education-card">
+                <div class="education-icon">
+                    <i class="fas fa-university"></i>
                 </div>
                 <div class="education-details">
                     <h3>Joined Gargi Memorial Institute of Technology</h3>
@@ -265,13 +396,60 @@
     </section>
 
     <section id="contact" class="contact reveal-section">
-        <h2>Get in Touch</h2>
-        <form id="contactForm" class="contact-form">
-            <input type="text" placeholder="Name" required class="animate-input">
-            <input type="email" placeholder="Email" required class="animate-input">
-            <textarea placeholder="Message" required class="animate-input"></textarea>
-            <button type="submit" class="submit-button">Send Message</button>
-        </form>
+        <div class="section-header">
+            <span class="section-tag">Reach Out</span>
+            <h2>Get in Touch</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <p>soumenpore7777@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Location</h3>
+                        <p>West Bengal, India</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Phone</h3>
+                        <p>+91 74XXX XXX65</p>
+                    </div>
+                </div>
+            </div>
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Name" required class="animate-input">
+                    <span class="form-focus"></span>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required class="animate-input">
+                    <span class="form-focus"></span>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Message" required class="animate-input"></textarea>
+                    <span class="form-focus"></span>
+                </div>
+                <button type="submit" class="submit-button">
+                    <span>Send Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
     </section>
 
     <button class="theme-toggle" id="themeToggle">
@@ -280,22 +458,42 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2025 Your Portfolio. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/Soumen-dev-ux" target="_blank" class="social-button">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/soumen-pore-3998b1312/" target="_blank" class="social-button">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://www.instagram.com/your_sou_0109/" target="_blank" class="social-button">
-                    <i class="fab fa-instagram"></i>
-                </a>
+            <div class="footer-logo">
+                <h2>Soumen<span>Pore</span></h2>
+                <p>Full Stack  Embeded Developer & Creative Professional</p>
             </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Connect With Me</h3>
+                <div class="social-links">
+                    <a href="https://github.com/Soumen-dev-ux" target="_blank" class="social-button github-button">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/soumen-pore-3998b1312/" target="_blank" class="social-button linkedin-button">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/your_sou_0109/" target="_blank" class="social-button instagram-button">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/SoumenPore62983" target="_blank" class="social-button x-button">
+                        <span class="x-icon"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Soumen Pore. All rights reserved.</p>
         </div>
     </footer>
 
     <script type="module" src="/main.js"></script>
 </body>
 </html>
-

@@ -31,6 +31,15 @@ function toggleTheme() {
 
   // Add page transition effect
   const pageTransition = document.querySelector(".page-transition")
+
+  // Position the transition origin based on the theme toggle button
+  const toggleRect = themeToggle.getBoundingClientRect()
+  pageTransition.style.transformOrigin = `${toggleRect.left + toggleRect.width / 2}px ${toggleRect.top + toggleRect.height / 2}px`
+
+  // Set the transition background color based on the new theme
+  pageTransition.style.backgroundColor = newTheme === "dark" ? "#111827" : "#ffffff"
+
+  // Activate the transition
   pageTransition.classList.add("active")
 
   setTimeout(() => {
@@ -42,8 +51,8 @@ function toggleTheme() {
 
     setTimeout(() => {
       pageTransition.classList.remove("active")
-    }, 500)
-  }, 500)
+    }, 600)
+  }, 400)
 }
 
 // Load saved theme

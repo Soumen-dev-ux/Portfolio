@@ -211,6 +211,18 @@
             z-index: -1;
         }
     </style>
+        <script>
+    // Load saved theme with animation
+    document.addEventListener("DOMContentLoaded", function() {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        const html = document.documentElement;
+        const themeIcon = document.querySelector("#themeToggle i");
+        
+        // Set theme without animation on initial load
+        html.setAttribute("data-theme", savedTheme);
+        themeIcon.className = savedTheme === "dark" ? "fas fa-sun" : "fas fa-moon";
+    });
+</script>
 </head>
 <body>
     
@@ -460,7 +472,7 @@
         <div class="footer-content">
             <div class="footer-logo">
                 <h2>Soumen<span>Pore</span></h2>
-                <p>Full Stack  Embeded Developer & Creative Professional</p>
+                <p>Embedded Full Stack Developer & Creative Professional</p>
             </div>
             <div class="footer-links">
                 <h3>Quick Links</h3>

@@ -570,6 +570,40 @@ section {
   left: 100%;
 }
 
+.skill-list img {
+  transition: transform 0.3s ease;
+}
+
+.skill-list img:hover {
+  transform: scale(1.2);
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.skill-list img {
+    transition: transform 0.3s ease;
+}
+
+.skill-list img:hover {
+    transform: scale(1.2);
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.skill-list li {
+    list-style: none;
+}
+
 /* Stats Section */
 .stats {
   background-color: var(--bg-color);

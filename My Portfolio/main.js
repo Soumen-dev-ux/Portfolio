@@ -13,10 +13,18 @@ const projects = [
     title: "SafeSpace",
     description:
       "Protecting students, women, the elderly, and travelers with advanced AI technology that works silently in the background.",
-    image: "https://postimage.me/images/2025/04/24/Screenshot-2025-04-23-140935.png",
+    
     technologies: ["Next.js", "React", "Tailwind CSS", "Radix UI", "Supabse", "PostgreSQL", "PNPM"],
-    liveLink: " https://safespace-2-0.vercel.app/",
+    liveLink: " https://i.postimg.cc/qByTBRpy/Screenshot-2025-07-09-223805.png",
     githubLink: "https://github.com/Debraj1001/safespace-2-0",
+  },
+  {
+    title : "Edumorph",
+    description: "Personalized education powered by artificial intelligence. Learn faster, retain more, and achieve your goals with EduMorph.",
+    image: "https://i.postimg.cc/VkD1yVmh/Screenshot-2025-07-09-214541.png",
+    technologies: ["Ongoing"],
+    livelink:"https://edu-morph.netlify.app/",
+    githubLink: "https://github.com/Soumen-dev-ux/EduMorph",
   },
 ]
 
